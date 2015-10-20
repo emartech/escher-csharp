@@ -8,8 +8,8 @@ sudo: false
 addons:
   apt:
     packages:
+      - mono-complete
       - nunit-console
-      - mono-xbuild
 
 script:
   - xbuild --version
