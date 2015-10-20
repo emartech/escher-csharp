@@ -7,8 +7,9 @@ addons:
   apt:
     packages:
       - nunit-console
+      - mono-xbuild
 
 script:
-  - xbuild /p:Configuration=Release solution-name.sln
+  - mono-xbuild /p:Configuration=Release solution-name.sln
   - nunit-console ./EscherAuthTests\bin\Release\EscherAuthTests.dll
 
