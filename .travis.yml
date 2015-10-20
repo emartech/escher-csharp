@@ -1,5 +1,7 @@
 olanguage: csharp
 solution: EscherAuth.sln
+mono:
+  - latest
 
 sudo: false
 
