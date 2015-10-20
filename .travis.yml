@@ -1,8 +1,8 @@
 olanguage: csharp
-solution: solution-name.sln
+solution: EscherAuth.sln
 
 install:
-  - nuget restore solution-name.sln
+  - nuget restore EscherAuth.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 script:
