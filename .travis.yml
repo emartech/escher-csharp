@@ -4,6 +4,7 @@ solution: EscherAuth.sln
 sudo: false
 
 script:
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   - xbuild /p:Configuration=Release EscherAuth.sln
-  - mono packages/NUnit.Runners.2.6.1/tools/nunit-console.exe ./EscherAuthTests/bin/Release/EscherAuthTests.dll
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./EscherAuthTests/bin/Release/EscherAuthTests.dll
 
