@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscherAuth", "EscherAuth\EscherAuth.csproj", "{A76DEB39-C74E-425A-A4E7-1F145BEF54A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscherAuthTests", "EscherAuthTests\EscherAuthTests.csproj", "{1FC6FDD2-B056-44DB-9D3D-D8E235D3A737}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A76DEB39-C74E-425A-A4E7-1F145BEF54A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76DEB39-C74E-425A-A4E7-1F145BEF54A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76DEB39-C74E-425A-A4E7-1F145BEF54A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76DEB39-C74E-425A-A4E7-1F145BEF54A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC6FDD2-B056-44DB-9D3D-D8E235D3A737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC6FDD2-B056-44DB-9D3D-D8E235D3A737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC6FDD2-B056-44DB-9D3D-D8E235D3A737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC6FDD2-B056-44DB-9D3D-D8E235D3A737}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
