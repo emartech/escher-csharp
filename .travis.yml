@@ -3,15 +3,8 @@ solution: EscherAuth.sln
 mono:
   - 3.10.0 
 
-sudo: false
-
-addons:
-  apt:
-    packages:
-      - mono-xbuild
-      - nunit-console
-
 script:
+  - sudo apt-get install nunit-console
   - xbuild --version
   - xbuild /p:Configuration=Release EscherAuth.sln
   - nunit-console ./EscherAuthTests/bin/Release/EscherAuthTests.dll
