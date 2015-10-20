@@ -1,11 +1,10 @@
 olanguage: csharp
 solution: EscherAuth.sln
 
-install:
-  - nuget restore EscherAuth.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+before_install:
+  - sudo apt-get install nunit-console
 
 script:
   - xbuild /p:Configuration=Release solution-name.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./EscherAuthTests\bin\Release\EscherAuthTests.dll
+  - nunit-console ./EscherAuthTests\bin\Release\EscherAuthTests.dll
 
