@@ -1,4 +1,4 @@
-olanguage: csharp
+language: csharp
 solution: EscherAuth.sln
 mono:
   - 3.10.0 
