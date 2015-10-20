@@ -4,8 +4,8 @@ mono:
   - 3.10.0 
 
 script:
-  - sudo apt-get install nunit-console
   - sudo apt-get update
+  - sudo apt-get install nunit-console
   - xbuild --version
   - xbuild /p:Configuration=Release EscherAuth.sln
   - nunit-console ./EscherAuthTests/bin/Release/EscherAuthTests.dll
