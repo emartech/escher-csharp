@@ -1,13 +1,9 @@
 language: csharp
 solution: EscherAuth.sln
-mono:
-  - 3.10.0 
+
+sudo: false
 
 script:
-  - sudo apt-get update
-  - sudo apt-get install nunit-console
-  - sudo apt-get install mono-xbuild
-  - xbuild --version
   - xbuild /p:Configuration=Release EscherAuth.sln
-  - nunit-console ./EscherAuthTests/bin/Release/EscherAuthTests.dll
+  - mono packages/NUnit.Runners.2.6.1/tools/nunit-console.exe ./EscherAuthTests/bin/Release/EscherAuthTests.dll
 
