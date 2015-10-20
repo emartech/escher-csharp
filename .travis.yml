@@ -1,8 +1,12 @@
 olanguage: csharp
 solution: EscherAuth.sln
 
-before_install:
-  - sudo apt-get install nunit-console
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - nunit-console
 
 script:
   - xbuild /p:Configuration=Release solution-name.sln
