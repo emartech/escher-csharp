@@ -10,6 +10,6 @@ addons:
       - mono-xbuild
 
 script:
-  - xbuild /p:Configuration=Release solution-name.sln
+  - xbuild /p:Configuration=Release EscherAuth.sln
   - nunit-console ./EscherAuthTests\bin\Release\EscherAuthTests.dll
 
