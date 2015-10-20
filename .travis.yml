@@ -8,7 +8,7 @@ sudo: false
 addons:
   apt:
     packages:
-      - mono-xbuild:i386
+      - mono-xbuild
       - nunit-console
 
 script:
