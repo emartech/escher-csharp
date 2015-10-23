@@ -17,13 +17,14 @@ namespace EscherAuthTests
         {
             var canonicalizer = new RequestCanonicalizer();
             var canonicalizedRequest = canonicalizer.Canonicalize(testFixture.request, testFixture.headersToSign);
-
+            
             try
             {
                 Assert.AreEqual(testFixture.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
             }
             catch (Exception)
             {
+                Console.WriteLine(testFixture.title);
                 Console.WriteLine("#######################################################################");
                 Console.WriteLine(testFixture.expected.canonicalizedRequest);
                 Console.WriteLine("#######################################################################");
@@ -35,12 +36,29 @@ namespace EscherAuthTests
 
         static object[] TestFixtures()
         {
+            // return new object[] { TestFixtureReader.Read(@"TestFixtures/emarsys_testsuite\signrequest-get-header-key-duplicate.json") };
+
             var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
                 .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
 
-            return new object[] { TestFixtureReader.Read(@"TestFixtures/aws4_testsuite/signrequest-post-vanilla-query-space.json") };
+            return files
+                .Where(file => file.Contains("signrequest"))
+                .Where(file => !IsOnBlackList(file) && !file.Contains("get-vanilla-query-unreserved"))
+                .Select(file => (object) TestFixtureReader.Read(file))
+                .ToArray();
+        }
 
-            return files.Select(file => (object) TestFixtureReader.Read(file)).ToArray();
-        }   
+        static bool IsOnBlackList(string file)
+        {
+            var blackList = new string[]
+            {
+                "signrequest-get-vanilla-query-unreserved",
+                "signrequest-post-vanilla-query-nonunreserved",
+                "signrequest-date-header-should-be-signed-headers", // WARNING do not exclude in e2e tests
+                "signrequest-support-custom-config" // 2x // TODO what are these?
+            };
+
+            return blackList.Any(file.Contains);
+        }
     }
 }
