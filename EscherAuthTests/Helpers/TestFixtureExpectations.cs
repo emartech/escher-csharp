@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EscherAuthTests.Helpers
 {
-    class TestFixtureExpectations
+    public class TestFixtureExpectations
     {
         public TestRequest request { get; set; }
         public string canonicalizedRequest { get; set; }

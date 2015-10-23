@@ -10,9 +10,8 @@ namespace EscherAuthTests
     public class EscherTests
     {
         [Test()]
-        public void HelloTest()
+        public void Test()
         {
-            Assert.AreEqual("Hello World", new Escher().Hello());
         }
     }
 }

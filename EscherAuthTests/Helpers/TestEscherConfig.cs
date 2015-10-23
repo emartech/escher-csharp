@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EscherAuthTests.Helpers
 {
-    class TestEscherConfig
+    public class TestEscherConfig
     {
         public string vendorKey {get;set;} = "AWS4";
         public string algoPrefix {get;set;} = "AWS4";

@@ -7,7 +7,7 @@ using EscherAuth.Request;
 
 namespace EscherAuthTests.Helpers
 {
-    class TestRequest : IEscherRequest
+    public class TestRequest : IEscherRequest
     {
         public string method { get; set; }
         public string url { get; set; }

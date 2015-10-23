@@ -11,7 +11,9 @@ namespace EscherAuthTests.Helpers
     {
         public static TestFixture Read(string fileName)
         {
-            return JsonConvert.DeserializeObject<TestFixture>(File.ReadAllText(fileName));
+            var testFixture = JsonConvert.DeserializeObject<TestFixture>(File.ReadAllText(fileName));
+            testFixture.title = testFixture.title ?? fileName;
+            return testFixture;
         }
     }
 }
