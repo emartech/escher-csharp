@@ -38,7 +38,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Escher.cs" />
+    <Compile Include="Request\Header.cs" />
+    <Compile Include="Request\IEscherRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestCanonicalizer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

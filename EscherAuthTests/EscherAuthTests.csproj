@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -52,10 +56,80 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EscherTests.cs" />
+    <Compile Include="Helpers\TestEscherConfig.cs" />
+    <Compile Include="Helpers\TestFixtrureReader.cs" />
+    <Compile Include="Helpers\TestFixture.cs" />
+    <Compile Include="Helpers\TestFixtureExpectations.cs" />
+    <Compile Include="Helpers\TestRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestCanonicalizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-header-value-trim.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-relative-relative.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-relative.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash-dot-slash.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash-pointless-dot.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slashes.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-space.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-unreserved.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-utf8.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-empty-query-key.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-key-case.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-key.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-value.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-unreserved.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-ut8-query.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-key-case.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-key-sort.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-value-case.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-empty-query-value.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query-nonunreserved.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query-space.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-x-www-form-urlencoded-parameters.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-x-www-form-urlencoded.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-date-header-auth-header-date-not-equal.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-date-header-not-signed.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-host-header-not-signed.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-auth-header.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-credential-scope.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-escher-key.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-hash-algorithm.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-auth-header.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-date-header.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-host-header.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-presigned-url-expired.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-request-date-invalid.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-wrong-signature.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-authentication-datein-expiretime.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-credential-with-spaces.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-get-vanilla-empty-query-with-custom-headernames.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-get-vanilla-empty-query.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-ignore-headers-order.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-presigned-double-url-encoded.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-presigned-url-with-query.json" />
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-with-generating-presigned-url-with-query.json" />
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-double-url-encoded.json" />
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-hash.json" />
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-path-query.json" />
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-port.json" />
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-URL-encoded-array-parameters.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-date-header-should-be-signed-headers.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-get-header-key-duplicate.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-get-header-value-order.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-only-sign-specified-headers.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-key-order.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-value-spaces-within-quotes.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-value-spaces.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-payload-utf8.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-support-custom-config-with-customer-id.json" />
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-support-custom-config.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EscherAuth\EscherAuth.csproj">
@@ -63,6 +137,7 @@
       <Name>EscherAuth</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
@@ -83,6 +158,9 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(ProjectDir)TestFixtures" "$(TargetDir)TestFixtures\" /S /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
