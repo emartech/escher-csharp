@@ -66,70 +66,198 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-header-value-trim.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-relative-relative.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-relative.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash-dot-slash.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash-pointless-dot.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slashes.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-space.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-unreserved.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-utf8.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-empty-query-key.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-key-case.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-key.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-value.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-unreserved.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-ut8-query.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-key-case.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-key-sort.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-value-case.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-empty-query-value.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query-nonunreserved.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query-space.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-x-www-form-urlencoded-parameters.json" />
-    <None Include="TestFixtures\aws4_testsuite\signrequest-post-x-www-form-urlencoded.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-date-header-auth-header-date-not-equal.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-date-header-not-signed.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-host-header-not-signed.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-auth-header.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-credential-scope.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-escher-key.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-hash-algorithm.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-auth-header.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-date-header.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-host-header.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-presigned-url-expired.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-request-date-invalid.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-wrong-signature.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-authentication-datein-expiretime.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-credential-with-spaces.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-get-vanilla-empty-query-with-custom-headernames.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-get-vanilla-empty-query.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-ignore-headers-order.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-presigned-double-url-encoded.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-presigned-url-with-query.json" />
-    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-with-generating-presigned-url-with-query.json" />
-    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-double-url-encoded.json" />
-    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-hash.json" />
-    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-path-query.json" />
-    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-port.json" />
-    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-URL-encoded-array-parameters.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-date-header-should-be-signed-headers.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-get-header-key-duplicate.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-get-header-value-order.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-only-sign-specified-headers.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-key-order.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-value-spaces-within-quotes.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-value-spaces.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-payload-utf8.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-support-custom-config-with-customer-id.json" />
-    <None Include="TestFixtures\emarsys_testsuite\signrequest-support-custom-config.json" />
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-header-value-trim.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-relative-relative.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-relative.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash-dot-slash.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash-pointless-dot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slash.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-slashes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-space.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-unreserved.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-utf8.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-empty-query-key.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-key-case.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-key.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-order-value.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query-unreserved.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-query.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla-ut8-query.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-get-vanilla.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-key-case.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-key-sort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-header-value-case.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-empty-query-value.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query-nonunreserved.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query-space.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla-query.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-vanilla.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-x-www-form-urlencoded-parameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\aws4_testsuite\signrequest-post-x-www-form-urlencoded.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-date-header-auth-header-date-not-equal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-date-header-not-signed.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-host-header-not-signed.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-auth-header.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-credential-scope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-escher-key.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-invalid-hash-algorithm.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-auth-header.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-date-header.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-missing-host-header.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-presigned-url-expired.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-request-date-invalid.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-error-wrong-signature.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-authentication-datein-expiretime.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-credential-with-spaces.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-get-vanilla-empty-query-with-custom-headernames.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-get-vanilla-empty-query.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-ignore-headers-order.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-presigned-double-url-encoded.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-presigned-url-with-query.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\authenticate-valid-with-generating-presigned-url-with-query.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-double-url-encoded.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-hash.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-path-query.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-port.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\presignurl-valid-with-URL-encoded-array-parameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-date-header-should-be-signed-headers.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-get-header-key-duplicate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-get-header-value-order.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-only-sign-specified-headers.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-key-order.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-value-spaces-within-quotes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-header-value-spaces.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-post-payload-utf8.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-support-custom-config-with-customer-id.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-support-custom-config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EscherAuth\EscherAuth.csproj">
@@ -159,7 +287,8 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(ProjectDir)TestFixtures" "$(TargetDir)TestFixtures\" /S /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
