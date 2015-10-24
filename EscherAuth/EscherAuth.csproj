@@ -38,6 +38,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateTimeEscherDateExtensions.cs" />
     <Compile Include="Escher.cs" />
     <Compile Include="EscherConfig.cs" />
     <Compile Include="Hash\Hasher.cs" />
