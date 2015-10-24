@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using EscherAuth.Request;
 using System.Web;
+using EscherAuth.Hash;
 
 namespace EscherAuth
 {
@@ -13,7 +14,7 @@ namespace EscherAuth
         public string Canonicalize(IEscherRequest request, string[] headersToSign)
         {
             headersToSign = headersToSign.Select(h => h.ToLower()).ToArray();
-            var hasher = SHA256.Create();
+            
 
             var uri = new Uri("http://localhost" + request.Url);
 
@@ -26,7 +27,7 @@ namespace EscherAuth
             {
                 null,
                 String.Join(";", headersToSign.OrderBy(s => s)),
-                BitConverter.ToString(hasher.ComputeHash( System.Text.Encoding.UTF8.GetBytes(request.Body))).Replace("-", "").ToLower()
+                Hasher.Hash(request.Body)
             }));
         }
 

@@ -43,7 +43,7 @@ namespace EscherAuthTests
 
             return files
                 .Where(file => file.Contains("signrequest"))
-                .Where(file => !IsOnBlackList(file) && !file.Contains("get-vanilla-query-unreserved"))
+                .Where(file => !IsOnBlackList(file))
                 .Select(file => (object) TestFixtureReader.Read(file))
                 .ToArray();
         }

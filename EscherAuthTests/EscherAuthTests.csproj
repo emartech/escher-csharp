@@ -63,6 +63,7 @@
     <Compile Include="Helpers\TestRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestCanonicalizerTests.cs" />
+    <Compile Include="StringToSignComposerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
