@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using EscherAuth;
+﻿using System.Linq;
 using EscherAuth.Request;
 
 namespace EscherAuthTests.Helpers
@@ -29,7 +25,7 @@ namespace EscherAuthTests.Helpers
         public Header[] Headers
         {
             get { return headers.Select(h => new Header(h[0], h[1])).ToArray(); }
-            set { headers = value.Select(h => new string[] { h.Name, h.Value }).ToArray(); }
+            set { headers = value.Select(h => new[] { h.Name, h.Value }).ToArray(); }
         }
 
         public string Body

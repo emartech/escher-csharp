@@ -1,11 +1,8 @@
 ﻿using NUnit.Framework;
 using EscherAuth;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using EscherAuthTests.Helpers;
 
 namespace EscherAuthTests
@@ -18,7 +15,7 @@ namespace EscherAuthTests
         {
             var stringToSignComposer = new StringToSignComposer();
             var stringToSign = stringToSignComposer.Compose(
-                testFixture.expected.canonicalizedRequest, 
+                testFixture.expected.canonicalizedRequest,
                 DateTime.Parse(testFixture.config.date).ToUniversalTime(),
                 testFixture.config.ToEscherConfig()
             );
@@ -55,7 +52,7 @@ namespace EscherAuthTests
 
         static bool IsOnBlackList(string file)
         {
-            var blackList = new string[]
+            var blackList = new[]
             {
                 "signrequest-get-vanilla-query-unreserved",
                 "signrequest-post-vanilla-query-nonunreserved",

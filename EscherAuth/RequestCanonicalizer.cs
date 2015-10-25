@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using EscherAuth.Request;
 using System.Web;
@@ -18,12 +17,12 @@ namespace EscherAuth
 
             var uri = new Uri("http://localhost" + request.Url);
 
-            return String.Join("\n", new string[]
+            return String.Join("\n", new[]
             {
                 request.Method.ToUpper(),
                 uri.AbsolutePath.Replace("//", "/"),
                 CanonicalizeQueryString(uri),
-            }.Concat(CanonicalizeHeaders(request, headersToSign)).Concat(new string[]
+            }.Concat(CanonicalizeHeaders(request, headersToSign)).Concat(new[]
             {
                 null,
                 String.Join(";", headersToSign.OrderBy(s => s)),
@@ -43,12 +42,14 @@ namespace EscherAuth
 
             foreach (var header in headers)
             {
-                if (headersAsString.Any(h => h.Contains(header.Name + ":")))
+                var currentHeader = header;
+
+                if (headersAsString.Any(h => h.Contains(currentHeader.Name + ":")))
                     continue;
 
-                var headersWithSameName = headers.Where(h => h.Name == header.Name);
+                var headersWithSameName = headers.Where(h => h.Name == currentHeader.Name);
 
-                headersAsString.Add(header.Name + ":" + String.Join(",", headersWithSameName.Select(h => h.Value)));
+                headersAsString.Add(currentHeader.Name + ":" + String.Join(",", headersWithSameName.Select(h => h.Value)));
             }
 
             return headersAsString;
@@ -75,7 +76,7 @@ namespace EscherAuth
 
                 Array.Sort(values, StringComparer.Ordinal);
                 enumerableQueryParams.Add(key == null
-                    ? new Tuple<string, string[]>(values.FirstOrDefault(), new string[] {""})
+                    ? new Tuple<string, string[]>(values.FirstOrDefault(), new[] {""})
                     : new Tuple<string, string[]>(key, values));
             }
             return String.Join("&", enumerableQueryParams.Select(param => String.Join("&", param.Item2.Select(value => param.Item1 + "=" + value))));

@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
 using EscherAuth;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using EscherAuthTests.Helpers;
 using System.IO;
 
@@ -17,7 +15,7 @@ namespace EscherAuthTests
         {
             var canonicalizer = new RequestCanonicalizer();
             var canonicalizedRequest = canonicalizer.Canonicalize(testFixture.request, testFixture.headersToSign);
-            
+
             try
             {
                 Assert.AreEqual(testFixture.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
@@ -44,13 +42,13 @@ namespace EscherAuthTests
             return files
                 .Where(file => file.Contains("signrequest"))
                 .Where(file => !IsOnBlackList(file))
-                .Select(file => (object) TestFixtureReader.Read(file))
+                .Select(file => (object)TestFixtureReader.Read(file))
                 .ToArray();
         }
 
         static bool IsOnBlackList(string file)
         {
-            var blackList = new string[]
+            var blackList = new[]
             {
                 "signrequest-get-vanilla-query-unreserved",
                 "signrequest-post-vanilla-query-nonunreserved",
