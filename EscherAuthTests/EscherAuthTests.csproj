@@ -55,6 +55,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AuthHeaderComposerTests.cs" />
     <Compile Include="EscherTests.cs" />
     <Compile Include="Helpers\TestEscherConfig.cs" />
     <Compile Include="Helpers\TestFixtrureReader.cs" />

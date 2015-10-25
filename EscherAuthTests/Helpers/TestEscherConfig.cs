@@ -1,4 +1,5 @@
-﻿using EscherAuth;
+﻿using System;
+using EscherAuth;
 
 namespace EscherAuthTests.Helpers
 {
@@ -13,6 +14,11 @@ namespace EscherAuthTests.Helpers
         public string authHeaderName {get;set;} = "Authorization";
         public string dateHeaderName {get;set;} = "Date";
         public string date { get; set; } = "2011-09-09T23 {get;set;} =36 {get;set;} =00.000Z";
+
+        public DateTime DateTime
+        {
+            get { return DateTime.Parse(date).ToUniversalTime(); }
+        }
 
         public EscherConfig ToEscherConfig()
         {

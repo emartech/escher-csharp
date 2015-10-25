@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using EscherAuth;
-using System;
 using System.IO;
 using System.Linq;
 using EscherAuthTests.Helpers;
@@ -8,24 +7,27 @@ using EscherAuthTests.Helpers;
 namespace EscherAuthTests
 {
     [TestFixture()]
-    public class StringToSignComposerTests
+    public class AuthHeaderComposerTests
     {
         [Test(), TestCaseSource("TestFixtures")]
         public void ComposeTest(TestFixture testFixture)
         {
-            var stringToSignComposer = new StringToSignComposer();
-            var stringToSign = stringToSignComposer.Compose(
-                testFixture.expected.canonicalizedRequest,
+            var authHeaderComposer = new AuthHeaderComposer();
+            var authHeader = authHeaderComposer.Compose(
+                testFixture.config.ToEscherConfig(),
+                testFixture.config.accessKeyId, 
                 testFixture.config.DateTime,
-                testFixture.config.ToEscherConfig()
+                testFixture.headersToSign,
+                testFixture.expected.stringToSign,
+                testFixture.config.apiSecret
             );
 
-            Assert.AreEqual(testFixture.expected.stringToSign, stringToSign, "stringToSign does not work");
+            Assert.AreEqual(testFixture.expected.authHeader, authHeader);
         }
 
         static object[] TestFixtures()
         {
-            //return new object[] { TestFixtureReader.Read(@"TestFixtures/aws4_testsuite\signrequest-get-vanilla.json") };
+            // return new object[] { TestFixtureReader.Read(@"TestFixtures/aws4_testsuite\signrequest-get-vanilla.json") };
 
             var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
                 .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));

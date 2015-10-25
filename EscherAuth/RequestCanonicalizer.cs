@@ -26,7 +26,7 @@ namespace EscherAuth
             {
                 null,
                 String.Join(";", headersToSign.OrderBy(s => s)),
-                Hasher.Hash(request.Body)
+                HashHelper.Hash(request.Body)
             }));
         }
 

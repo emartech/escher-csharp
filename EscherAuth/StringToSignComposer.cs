@@ -12,7 +12,7 @@ namespace EscherAuth
                 config.AlgorithmPrefix.ToUpper() + "-HMAC-" + config.HashAlgorithm.ToUpper(),
                 dateTime.ToEscherLongDate(),
                 dateTime.ToEscherShortDate() + "/" + config.CredentialScope,
-                Hasher.Hash(canonicalizedRequest, config.HashAlgorithm)
+                HashHelper.Hash(canonicalizedRequest, config.HashAlgorithm)
             });
         }
     }
