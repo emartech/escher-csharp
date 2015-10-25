@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using EscherAuth.Hash;
 
@@ -14,7 +15,7 @@ namespace EscherAuth
             {
                 config.AlgorithmPrefix + "-HMAC-" + config.HashAlgorithm.ToUpper(),
                 string.Format("Credential={0}/{1}/{2},", key, dateTime.ToEscherShortDate(), config.CredentialScope),
-                string.Format("SignedHeaders={0},", String.Join(";", headersToSign)) ,
+                string.Format("SignedHeaders={0},", String.Join(";", headersToSign.Select(h => h.ToLower()))),
                 "Signature=" + CalculateSignature(stringToSign, secret, dateTime, config)
             }); 
         }

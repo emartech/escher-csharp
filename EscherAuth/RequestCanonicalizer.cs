@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using EscherAuth.Request;
@@ -13,15 +14,12 @@ namespace EscherAuth
         public string Canonicalize(IEscherRequest request, string[] headersToSign)
         {
             headersToSign = headersToSign.Select(h => h.ToLower()).ToArray();
-            
-
-            var uri = new Uri("http://localhost" + request.Url);
 
             return String.Join("\n", new[]
             {
                 request.Method.ToUpper(),
-                uri.AbsolutePath.Replace("//", "/"),
-                CanonicalizeQueryString(uri),
+                request.Uri.AbsolutePath,
+                CanonicalizeQueryString(request.Uri),
             }.Concat(CanonicalizeHeaders(request, headersToSign)).Concat(new[]
             {
                 null,

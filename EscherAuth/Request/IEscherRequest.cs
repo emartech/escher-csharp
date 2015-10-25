@@ -1,10 +1,13 @@
-﻿namespace EscherAuth.Request
+﻿using System;
+using System.Collections.Generic;
+
+namespace EscherAuth.Request
 {
     public interface IEscherRequest
     {
-        string Method { get; set; }
-        string Url { get; set; }
-        Header[] Headers { get; set; }
-        string Body { get; set; }
+        string Method { get; }
+        Uri Uri { get; }
+        List<Header> Headers { get; }
+        string Body { get; }
     }
 }

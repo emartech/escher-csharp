@@ -27,8 +27,6 @@ namespace EscherAuthTests
 
         static object[] TestFixtures()
         {
-            // return new object[] { TestFixtureReader.Read(@"TestFixtures/aws4_testsuite\signrequest-get-vanilla.json") };
-
             var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
                 .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
 
