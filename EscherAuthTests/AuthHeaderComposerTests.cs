@@ -10,19 +10,19 @@ namespace EscherAuthTests
     public class AuthHeaderComposerTests
     {
         [Test(), TestCaseSource("TestFixtures")]
-        public void ComposeTest(TestFixture testFixture)
+        public void ComposeTest(SigningTestFixture signingTestFixture)
         {
             var authHeaderComposer = new AuthHeaderComposer();
             var authHeader = authHeaderComposer.Compose(
-                testFixture.config.ToEscherConfig(),
-                testFixture.config.accessKeyId, 
-                testFixture.config.DateTime,
-                testFixture.headersToSign,
-                testFixture.expected.stringToSign,
-                testFixture.config.apiSecret
+                signingTestFixture.config.ToEscherConfig(),
+                signingTestFixture.config.accessKeyId, 
+                signingTestFixture.config.DateTime,
+                signingTestFixture.headersToSign,
+                signingTestFixture.expected.stringToSign,
+                signingTestFixture.config.apiSecret
             );
 
-            Assert.AreEqual(testFixture.expected.authHeader, authHeader);
+            Assert.AreEqual(signingTestFixture.expected.authHeader, authHeader);
         }
 
         static object[] TestFixtures()
@@ -33,7 +33,7 @@ namespace EscherAuthTests
             return files
                 .Where(file => file.Contains("signrequest"))
                 .Where(file => !IsOnBlackList(file))
-                .Select(file => (object)TestFixtureReader.Read(file))
+                .Select(file => (object)TestFixtureReader.ReadSigningFixture(file))
                 .ToArray();
         }
 

@@ -11,21 +11,21 @@ namespace EscherAuthTests
     public class StringToSignComposerTests
     {
         [Test(), TestCaseSource("TestFixtures")]
-        public void ComposeTest(TestFixture testFixture)
+        public void ComposeTest(SigningTestFixture signingTestFixture)
         {
             var stringToSignComposer = new StringToSignComposer();
             var stringToSign = stringToSignComposer.Compose(
-                testFixture.expected.canonicalizedRequest,
-                testFixture.config.DateTime,
-                testFixture.config.ToEscherConfig()
+                signingTestFixture.expected.canonicalizedRequest,
+                signingTestFixture.config.DateTime,
+                signingTestFixture.config.ToEscherConfig()
             );
 
-            Assert.AreEqual(testFixture.expected.stringToSign, stringToSign, "stringToSign does not work");
+            Assert.AreEqual(signingTestFixture.expected.stringToSign, stringToSign, "stringToSign does not work");
         }
 
         static object[] TestFixtures()
         {
-            //return new object[] { TestFixtureReader.Read(@"TestFixtures/aws4_testsuite\signrequest-get-vanilla.json") };
+            //return new object[] { TestFixtureReader.ReadSigningFixture(@"TestFixtures/aws4_testsuite\signrequest-get-vanilla.json") };
 
             var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
                 .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
@@ -33,7 +33,7 @@ namespace EscherAuthTests
             return files
                 .Where(file => file.Contains("signrequest"))
                 .Where(file => !IsOnBlackList(file))
-                .Select(file => (object)TestFixtureReader.Read(file))
+                .Select(file => (object)TestFixtureReader.ReadSigningFixture(file))
                 .ToArray();
         }
 

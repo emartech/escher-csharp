@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.WebControls;
 using EscherAuth.Request;
 
 namespace EscherAuth
@@ -63,6 +64,23 @@ namespace EscherAuth
             }
 
             return headersToSign.ToArray();
+        }
+
+        public string Authenticate(IEscherRequest request, IKeyDb keyDb)
+        {
+            var authHeader = request.Headers.FirstOrDefault(header => header.Name == Config.AuthHeaderName);
+            if (authHeader == null)
+            {
+                return "auth header missing";
+            }
+
+            var authHeaderParts = authHeader.Value.Split(' ');
+            var algorythms = authHeaderParts[0];
+            var credentialParts = authHeaderParts[1].Replace("Credential=", "").Split('/');
+            var apiKey = credentialParts[0];
+
+
+            return apiKey;
         }
 
     }

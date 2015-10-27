@@ -11,20 +11,20 @@ namespace EscherAuthTests
     public class RequestCanonicalizerTests
     {
         [Test(), TestCaseSource("TestFixtures")]
-        public void CanonicalizeTest(TestFixture testFixture)
+        public void CanonicalizeTest(SigningTestFixture signingTestFixture)
         {
             var canonicalizer = new RequestCanonicalizer();
-            var canonicalizedRequest = canonicalizer.Canonicalize(testFixture.request, testFixture.headersToSign);
+            var canonicalizedRequest = canonicalizer.Canonicalize(signingTestFixture.request, signingTestFixture.headersToSign);
 
             try
             {
-                Assert.AreEqual(testFixture.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
+                Assert.AreEqual(signingTestFixture.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
             }
             catch (Exception)
             {
-                Console.WriteLine(testFixture.title);
+                Console.WriteLine(signingTestFixture.title);
                 Console.WriteLine("#######################################################################");
-                Console.WriteLine(testFixture.expected.canonicalizedRequest);
+                Console.WriteLine(signingTestFixture.expected.canonicalizedRequest);
                 Console.WriteLine("#######################################################################");
                 Console.WriteLine(canonicalizedRequest);
                 Console.WriteLine("#######################################################################");
@@ -40,7 +40,7 @@ namespace EscherAuthTests
             return files
                 .Where(file => file.Contains("signrequest"))
                 .Where(file => !IsOnBlackList(file))
-                .Select(file => (object)TestFixtureReader.Read(file))
+                .Select(file => (object)TestFixtureReader.ReadSigningFixture(file))
                 .ToArray();
         }
 

@@ -12,41 +12,78 @@ namespace EscherAuthTests
     [TestFixture()]
     public class EscherTests
     {
-        [Test(), TestCaseSource("TestFixtures")]
-        public void SignRequestTest(TestFixture testFixture)
+
+        class SignRequestTests
         {
-            var escher = new Escher
+            [Test(), TestCaseSource("TestFixtures")]
+            public void SignRequestTest(SigningTestFixture signingTestFixture)
             {
-                Config = testFixture.config.ToEscherConfig()
-            };
+                var escher = new Escher
+                {
+                    Config = signingTestFixture.config.ToEscherConfig()
+                };
 
-            var signedRequest = escher.SignRequest(
-                testFixture.request,
-                testFixture.config.accessKeyId,
-                testFixture.config.apiSecret,
-                testFixture.headersToSign,
-                testFixture.config.DateTime
-            );
+                var signedRequest = escher.SignRequest(
+                    signingTestFixture.request,
+                    signingTestFixture.config.accessKeyId,
+                    signingTestFixture.config.apiSecret,
+                    signingTestFixture.headersToSign,
+                    signingTestFixture.config.DateTime
+                );
 
-            Assert.AreEqual(testFixture.expected.request, signedRequest);
+                Assert.AreEqual(signingTestFixture.expected.request, signedRequest);
+            }
+
+            static object[] TestFixtures()
+            {
+                var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
+                    .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
+
+                return files
+                    .Where(file => file.Contains("signrequest"))
+                    .Where(file => !IsOnBlackList(file))
+                    .Select(file => (object)TestFixtureReader.ReadSigningFixture(file))
+                    .ToArray();
+            }
         }
 
-        static object[] TestFixtures()
+        class AuthenticateTests
         {
-            var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
-                .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
 
-            return files
-                .Where(file => file.Contains("signrequest"))
-                .Where(file => !IsOnBlackList(file))
-                .Select(file => (object)TestFixtureReader.Read(file))
-                .ToArray();
+            [Test(), TestCaseSource("TestFixtures")]
+            public void AuthenticateTest(AuthenticationTestFixture testCase)
+            {
+                var escher = new Escher
+                {
+                    Config = testCase.config.ToEscherConfig()
+                };
+
+                var apiKey = escher.Authenticate(testCase.request, testCase.KeyDb);
+                
+                Assert.AreEqual(testCase.expected.apiKey, apiKey);
+            }
+
+            static object[] TestFixtures()
+            {
+                //return new object[] { TestFixtureReader.ReadAuthFixture("TestFixtures/emarsys_testsuite/authenticate-error-invalid-escher-key.json") };
+
+                var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
+                    .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
+
+                return files
+                    .Where(file => file.Contains("authenticate"))
+                    .Where(file => file.Contains("-valid-"))
+                    .Where(file => !IsOnBlackList(file))
+                    .Select(file => (object)TestFixtureReader.ReadAuthFixture(file))
+                    .ToArray();
+            }
         }
 
         static bool IsOnBlackList(string file)
         {
             var blackList = new[]
             {
+                "presigned", // not today
                 "signrequest-get-slash", // can be done...
                 "signrequest-get-vanilla-query-unreserved",
                 "signrequest-post-vanilla-query-nonunreserved",

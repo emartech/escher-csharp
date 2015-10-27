@@ -1,6 +1,6 @@
 ﻿namespace EscherAuthTests.Helpers
 {
-    public class TestFixtureExpectations
+    public class SigningExpectations
     {
         public TestRequest request { get; set; }
         public string canonicalizedRequest { get; set; }

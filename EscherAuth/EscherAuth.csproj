@@ -43,6 +43,7 @@
     <Compile Include="Escher.cs" />
     <Compile Include="EscherConfig.cs" />
     <Compile Include="Hash\HashHelper.cs" />
+    <Compile Include="IKeyDb.cs" />
     <Compile Include="Request\Header.cs" />
     <Compile Include="Request\IEscherRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

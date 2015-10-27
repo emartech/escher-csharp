@@ -57,10 +57,13 @@
   <ItemGroup>
     <Compile Include="AuthHeaderComposerTests.cs" />
     <Compile Include="EscherTests.cs" />
+    <Compile Include="Helpers\AuthenticationTestFixture.cs" />
+    <Compile Include="Helpers\AuthenticationExpectations.cs" />
     <Compile Include="Helpers\TestEscherConfig.cs" />
     <Compile Include="Helpers\TestFixtrureReader.cs" />
-    <Compile Include="Helpers\TestFixture.cs" />
-    <Compile Include="Helpers\TestFixtureExpectations.cs" />
+    <Compile Include="Helpers\SigningTestFixture.cs" />
+    <Compile Include="Helpers\SigningExpectations.cs" />
+    <Compile Include="Helpers\TestKeyDb.cs" />
     <Compile Include="Helpers\TestRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestCanonicalizerTests.cs" />
