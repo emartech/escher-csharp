@@ -16,22 +16,19 @@ namespace EscherAuthTests
         class SignRequestTests
         {
             [Test(), TestCaseSource("TestFixtures")]
-            public void SignRequestTest(SigningTestFixture signingTestFixture)
+            public void SignRequestTest(SigningTestFixture testCase)
             {
-                var escher = new Escher
-                {
-                    Config = signingTestFixture.config.ToEscherConfig()
-                };
+                var escher = new Escher { Config = testCase.config.ToEscherConfig() };
 
                 var signedRequest = escher.SignRequest(
-                    signingTestFixture.request,
-                    signingTestFixture.config.accessKeyId,
-                    signingTestFixture.config.apiSecret,
-                    signingTestFixture.headersToSign,
-                    signingTestFixture.config.DateTime
+                    testCase.request,
+                    testCase.config.accessKeyId,
+                    testCase.config.apiSecret,
+                    testCase.headersToSign,
+                    testCase.config.DateTime
                 );
 
-                Assert.AreEqual(signingTestFixture.expected.request, signedRequest);
+                Assert.AreEqual(testCase.expected.request, signedRequest);
             }
 
             static object[] TestFixtures()
@@ -50,23 +47,18 @@ namespace EscherAuthTests
         class AuthenticateTests
         {
 
-            [Test(), TestCaseSource("TestFixtures")]
-            public void AuthenticateTest(AuthenticationTestFixture testCase)
+            [Test(), TestCaseSource("ValidTestFixtures")]
+            public void AuthenticateTestForValidRequests(AuthenticationTestFixture testCase)
             {
-                var escher = new Escher
-                {
-                    Config = testCase.config.ToEscherConfig()
-                };
+                var escher = new Escher { Config = testCase.config.ToEscherConfig() };
 
-                var apiKey = escher.Authenticate(testCase.request, testCase.KeyDb);
+                var apiKey = escher.Authenticate(testCase.request, testCase.KeyDb, testCase.config.DateTime);
                 
                 Assert.AreEqual(testCase.expected.apiKey, apiKey);
             }
 
-            static object[] TestFixtures()
+            static object[] ValidTestFixtures()
             {
-                //return new object[] { TestFixtureReader.ReadAuthFixture("TestFixtures/emarsys_testsuite/authenticate-error-invalid-escher-key.json") };
-
                 var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
                     .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
 
@@ -77,12 +69,43 @@ namespace EscherAuthTests
                     .Select(file => (object)TestFixtureReader.ReadAuthFixture(file))
                     .ToArray();
             }
+
+            [Test(), TestCaseSource("InvalidTestFixtures")]
+            public void AuthenticateTestForInvalidRequests(AuthenticationTestFixture testCase)
+            {
+                var escher = new Escher { Config = testCase.config.ToEscherConfig() };
+
+                try
+                {
+                    escher.Authenticate(testCase.request, testCase.KeyDb, testCase.config.DateTime);
+
+                    Assert.Fail("Authentication should have failed");
+                }
+                catch (EscherAuthenticationException e)
+                {
+                    Assert.AreEqual(testCase.expected.error, e.Message);
+                }
+            }
+
+            static object[] InvalidTestFixtures()
+            {
+                var files = Directory.GetFiles("TestFixtures/aws4_testsuite")
+                    .Union(Directory.GetFiles("TestFixtures/emarsys_testsuite"));
+
+                return files
+                    .Where(file => file.Contains("authenticate"))
+                    .Where(file => file.Contains("-error-"))
+                    .Where(file => !IsOnBlackList(file))
+                    .Select(file => (object)TestFixtureReader.ReadAuthFixture(file))
+                    .ToArray();
+            }
         }
 
         static bool IsOnBlackList(string file)
         {
             var blackList = new[]
             {
+                "authenticate-valid-credential-with-spaces.json", //TODO to be done. or not.
                 "presigned", // not today
                 "signrequest-get-slash", // can be done...
                 "signrequest-get-vanilla-query-unreserved",

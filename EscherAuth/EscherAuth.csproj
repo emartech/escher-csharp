@@ -38,9 +38,11 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SignatureCalculator.cs" />
     <Compile Include="AuthHeaderComposer.cs" />
     <Compile Include="DateTimeEscherDateExtensions.cs" />
     <Compile Include="Escher.cs" />
+    <Compile Include="EscherAuthenticationException.cs" />
     <Compile Include="EscherConfig.cs" />
     <Compile Include="Hash\HashHelper.cs" />
     <Compile Include="IKeyDb.cs" />
