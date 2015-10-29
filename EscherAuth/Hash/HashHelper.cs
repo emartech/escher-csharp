@@ -6,9 +6,22 @@ namespace EscherAuth.Hash
 {
     class HashHelper
     {
-        public static string Hash(string subject, string hashAlgorithm = "TODO: to be implemented to be required")
+        public static string Hash(string subject, string hashAlgorithm)
         {
-            return ByteArrayToHexaString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(subject)));
+            HashAlgorithm hasher;
+            switch (hashAlgorithm)
+            {
+                case "SHA256":
+                    hasher = SHA256.Create();
+                    break;
+                case "SHA512":
+                    hasher = SHA512.Create();
+                    break;
+                default:
+                    throw new EscherException("Invalid hash algorythm: " + hashAlgorithm);
+            }
+            
+            return ByteArrayToHexaString(hasher.ComputeHash(Encoding.UTF8.GetBytes(subject)));
         }
 
         public static HMAC GetHMacImplementation(string hashAlgorithm)

@@ -1,10 +1,7 @@
 ﻿using NUnit.Framework;
 using EscherAuth;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using EscherAuthTests.Helpers;
 
 namespace EscherAuthTests

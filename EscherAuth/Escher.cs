@@ -25,7 +25,7 @@ namespace EscherAuth
             AddMandatoryHeaders(request, currentTime);
             headersToSign = AddMandatoryHeadersToSign(headersToSign);
 
-            var canonicalizedRequest = new RequestCanonicalizer().Canonicalize(request, headersToSign);
+            var canonicalizedRequest = new RequestCanonicalizer().Canonicalize(request, headersToSign, Config);
             var stringToSign = new StringToSignComposer().Compose(canonicalizedRequest, currentTime, Config);
             var authHeader = new AuthHeaderComposer().Compose(Config, key, currentTime, headersToSign, stringToSign, secret);
 
@@ -152,7 +152,7 @@ namespace EscherAuth
                 throw new EscherAuthenticationException("Invalid Escher key");
             }
 
-            var canonicalizedRequest = new RequestCanonicalizer().Canonicalize(request, signedHeaders);
+            var canonicalizedRequest = new RequestCanonicalizer().Canonicalize(request, signedHeaders, Config);
             var stringToSign = new StringToSignComposer().Compose(canonicalizedRequest, requestTime, Config);
             var calculatedSignature = SignatureCalculator.Sign(stringToSign, secret, requestTime, Config);
             if (calculatedSignature != signature)

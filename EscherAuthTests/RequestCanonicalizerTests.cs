@@ -11,20 +11,20 @@ namespace EscherAuthTests
     public class RequestCanonicalizerTests
     {
         [Test(), TestCaseSource("TestFixtures")]
-        public void CanonicalizeTest(SigningTestFixture signingTestFixture)
+        public void CanonicalizeTest(SigningTestFixture testCase)
         {
             var canonicalizer = new RequestCanonicalizer();
-            var canonicalizedRequest = canonicalizer.Canonicalize(signingTestFixture.request, signingTestFixture.headersToSign);
+            var canonicalizedRequest = canonicalizer.Canonicalize(testCase.request, testCase.headersToSign, testCase.config.ToEscherConfig());
 
             try
             {
-                Assert.AreEqual(signingTestFixture.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
+                Assert.AreEqual(testCase.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
             }
             catch (Exception)
             {
-                Console.WriteLine(signingTestFixture.title);
+                Console.WriteLine(testCase.title);
                 Console.WriteLine("#######################################################################");
-                Console.WriteLine(signingTestFixture.expected.canonicalizedRequest);
+                Console.WriteLine(testCase.expected.canonicalizedRequest);
                 Console.WriteLine("#######################################################################");
                 Console.WriteLine(canonicalizedRequest);
                 Console.WriteLine("#######################################################################");

@@ -11,7 +11,7 @@ namespace EscherAuth
 {
     public class RequestCanonicalizer
     {
-        public string Canonicalize(IEscherRequest request, string[] headersToSign)
+        public string Canonicalize(IEscherRequest request, string[] headersToSign, EscherConfig config)
         {
             headersToSign = headersToSign.Select(h => h.ToLower()).ToArray();
 
@@ -24,7 +24,7 @@ namespace EscherAuth
             {
                 null,
                 String.Join(";", headersToSign.OrderBy(s => s)),
-                HashHelper.Hash(request.Body)
+                HashHelper.Hash(request.Body, config.HashAlgorithm)
             }));
         }
 

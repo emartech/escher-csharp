@@ -38,6 +38,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EscherException.cs" />
     <Compile Include="SignatureCalculator.cs" />
     <Compile Include="AuthHeaderComposer.cs" />
     <Compile Include="DateTimeEscherDateExtensions.cs" />
