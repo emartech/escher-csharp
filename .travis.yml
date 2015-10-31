@@ -6,5 +6,5 @@ sudo: false
 script:
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   - xbuild /p:Configuration=Release EscherAuth.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./EscherAuthTests/bin/Release/EscherAuthTests.dll
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe -labels -nologo ./EscherAuthTests/bin/Release/EscherAuthTests.dll
 
