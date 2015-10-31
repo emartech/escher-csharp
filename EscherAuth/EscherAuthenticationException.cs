@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EscherAuth
 {
-    public class EscherAuthenticationException : Exception
+    public class EscherAuthenticationException : EscherException
     {
         public EscherAuthenticationException(string message) : base(message)
         {

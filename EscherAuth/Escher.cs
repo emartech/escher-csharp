@@ -75,6 +75,12 @@ namespace EscherAuth
         {
             currentTime = currentTime.ToUniversalTime();
 
+            var authHeader = request.Headers.FirstOrDefault(header => header.Name == Config.AuthHeaderName);
+            if (authHeader == null)
+            {
+                throw new EscherAuthenticationException("The authorization header is missing");
+            }
+
             var dateHeader = request.Headers.FirstOrDefault(header => header.Name == Config.DateHeaderName);
             if (dateHeader == null)
             {
@@ -85,12 +91,6 @@ namespace EscherAuth
             if (hostHeader == null)
             {
                 throw new EscherAuthenticationException("The host header is missing");
-            }
-
-            var authHeader = request.Headers.FirstOrDefault(header => header.Name == Config.AuthHeaderName);
-            if (authHeader == null)
-            {
-                throw new EscherAuthenticationException("The authorization header is missing");
             }
 
             var match = Regex.Match(authHeader.Value, "^([^\\-]+)-HMAC-(SHA[\\d]+) Credential=([^/]+)/([\\d]{8})/([^,]+), SignedHeaders=([^,]+), Signature=([a-z0-9]+)$");
