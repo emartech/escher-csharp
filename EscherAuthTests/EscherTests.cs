@@ -132,15 +132,33 @@ namespace EscherAuthTests
             }
 
             [Test()]
-            public void AuthenticateSignedRequest()
+            public void AuthenticateSignedGetRequest()
             {
                 var escher = new Escher();
                 var request = new TestRequest
                 {
                     Method = "GET",
-                    Uri = new Uri("http://localhost:19489/Default")
+                    Uri = new Uri("http://localhost:1234/asd?a=b"),
+                    Headers = new List<Header> { new Header("key", "value") }
                 };
-                request = escher.SignRequest(request, "escher_key", "escher_key_secret") as TestRequest;
+                request = escher.SignRequest(request, "escher_key", "escher_key_secret");
+
+                var validatedKey = escher.Authenticate(request, new TestKeyDb());
+                Assert.AreEqual("escher_key", validatedKey);
+            }
+
+            [Test()]
+            public void AuthenticateSignedPatchRequest()
+            {
+                var escher = new Escher();
+                var request = new TestRequest
+                {
+                    Method = "PATCH",
+                    Uri = new Uri("http://localhost:1234/users/123"),
+                    Headers = new List<Header> { new Header("Content-Type", "application/json") },
+                    Body = "{\"name\":\"Joe\"}"
+                };
+                request = escher.SignRequest(request, "escher_key", "escher_key_secret");
 
                 var validatedKey = escher.Authenticate(request, new TestKeyDb());
                 Assert.AreEqual("escher_key", validatedKey);

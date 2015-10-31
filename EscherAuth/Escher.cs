@@ -13,12 +13,12 @@ namespace EscherAuth
 
         public EscherConfig Config { get; set; } = new EscherConfig();
 
-        public IEscherRequest SignRequest(IEscherRequest request, string key, string secret, string[] headersToSign = null)
+        public TRequest SignRequest<TRequest>(TRequest request, string key, string secret, string[] headersToSign = null) where TRequest : IEscherRequest
         {
             return SignRequest(request, key, secret, headersToSign ?? new string[] { }, DateTime.Now);
         }
 
-        public IEscherRequest SignRequest(IEscherRequest request, string key, string secret, string[] headersToSign, DateTime currentTime)
+        public TRequest SignRequest<TRequest>(TRequest request, string key, string secret, string[] headersToSign, DateTime currentTime) where TRequest : IEscherRequest
         {
             currentTime = currentTime.ToUniversalTime();
 
