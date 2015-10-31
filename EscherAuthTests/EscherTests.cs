@@ -1,7 +1,10 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 using EscherAuth;
 using System.IO;
 using System.Linq;
+using EscherAuth.Request;
 using EscherAuthTests.Helpers;
 
 namespace EscherAuthTests
@@ -113,6 +116,36 @@ namespace EscherAuthTests
             };
 
             return blackList.Any(file.Contains);
+        }
+
+
+        class E2ETests
+        {
+            class TestKeyDb : IKeyDb { public string this[string key] => key + "_secret"; }
+
+            class TestRequest : IEscherRequest
+            {
+                public string Method { get; set; }
+                public Uri Uri { get; set; }
+                public List<Header> Headers { get; set; } = new List<Header>();
+                public string Body { get; set; } = "";
+            }
+
+            [Test()]
+            public void AuthenticateSignedRequest()
+            {
+                var escher = new Escher();
+                var request = new TestRequest
+                {
+                    Method = "GET",
+                    Uri = new Uri("http://localhost:19489/Default")
+                };
+                request = escher.SignRequest(request, "escher_key", "escher_key_secret") as TestRequest;
+
+                var validatedKey = escher.Authenticate(request, new TestKeyDb());
+                Assert.AreEqual("escher_key", validatedKey);
+            }
+
         }
     }
 }

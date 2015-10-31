@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>EscherAuth</id>
-    <version>$version$</version>
+    <version>1.0.3</version>
     <title>$title$</title>
     <authors>Tibor Toth</authors>
     <owners>Tibor Toth</owners>
@@ -11,4 +11,3 @@
     <tags>EscherAuth Escher Authentication Sign Signature</tags>
   </metadata>
 </package>
-
