@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EscherException.cs" />
+    <Compile Include="IEscher.cs" />
     <Compile Include="SignatureCalculator.cs" />
     <Compile Include="AuthHeaderComposer.cs" />
     <Compile Include="DateTimeEscherDateExtensions.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="StringToSignComposer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="EscherAuth.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

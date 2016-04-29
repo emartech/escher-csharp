@@ -6,7 +6,7 @@ using EscherAuth.Request;
 
 namespace EscherAuth
 {
-    public class Escher
+    public class Escher : IEscher
     {
         private const string UnsignedPayload = "UNSIGNED-PAYLOAD";
         private const int DefaultPresignExpiration = 86400;
