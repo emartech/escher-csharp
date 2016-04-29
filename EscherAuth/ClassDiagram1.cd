@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="EscherAuth.AuthHeaderComposer">
+    <Position X="12.5" Y="10.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AuthHeaderComposer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.DateTimeParser">
+    <Position X="16.75" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAACAAAAAgAAAAAIAADAAA=</HashCode>
+      <FileName>DateTimeEscherDateExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.Escher" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="6" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAQAAAAAAAAQEIAAAAAAAAAAAAoAAAAAAA=</HashCode>
+      <FileName>Escher.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Config" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EscherAuth.EscherAuthenticationException">
+    <Position X="5.75" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EscherAuthenticationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.EscherConfig">
+    <Position X="9.5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAgAAAAAAACAEAAAAAAAQAAAAAACAAAAAgA=</HashCode>
+      <FileName>EscherConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.EscherException">
+    <Position X="6.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EscherException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.RequestCanonicalizer">
+    <Position X="12.5" Y="6" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAQgAAAAAAAQIAAAAAAAAAAAA=</HashCode>
+      <FileName>RequestCanonicalizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.SignatureCalculator">
+    <Position X="12.5" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SignatureCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.StringToSignComposer">
+    <Position X="12.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StringToSignComposer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.Hash.HashHelper">
+    <Position X="16.75" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Hash\HashHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscherAuth.Request.Header">
+    <Position X="12.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAQAAAAAAIAAAAAgAAAAAAA=</HashCode>
+      <FileName>Request\Header.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="EscherAuth.IKeyDb">
+    <Position X="10.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IKeyDb.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EscherAuth.Request.IEscherRequest">
+    <Position X="10.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAhAAAACAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Request\IEscherRequest.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
