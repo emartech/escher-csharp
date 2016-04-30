@@ -8,8 +8,6 @@ namespace EscherAuth
 {
     public class Escher : IEscher
     {
-        private const string UnsignedPayload = "UNSIGNED-PAYLOAD";
-        private const int DefaultPresignExpiration = 86400;
 
         public EscherConfig Config { get; set; } = new EscherConfig();
 
