@@ -43,7 +43,7 @@ namespace EscherAuthTests
             {
                 "signrequest-get-vanilla-query-unreserved",
                 "signrequest-post-vanilla-query-nonunreserved",
-                "signrequest-date-header-should-be-signed-headers", // WARNING do not exclude in e2e tests
+                "signrequest-date-header-should-be-signed-headers",
                 "signrequest-support-custom-config" // 2x // TODO what are these?
             };
 

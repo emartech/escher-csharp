@@ -16,20 +16,7 @@ namespace EscherAuthTests
             var canonicalizer = new RequestCanonicalizer();
             var canonicalizedRequest = canonicalizer.Canonicalize(testCase.request, testCase.headersToSign, testCase.config.ToEscherConfig());
 
-            try
-            {
-                Assert.AreEqual(testCase.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine(testCase.title);
-                Console.WriteLine("#######################################################################");
-                Console.WriteLine(testCase.expected.canonicalizedRequest);
-                Console.WriteLine("#######################################################################");
-                Console.WriteLine(canonicalizedRequest);
-                Console.WriteLine("#######################################################################");
-                throw;
-            }
+            Assert.AreEqual(testCase.expected.canonicalizedRequest, canonicalizedRequest, "canonicalization does not work");
         }
 
         static object[] TestFixtures()
@@ -51,7 +38,7 @@ namespace EscherAuthTests
                 "signrequest-get-slash", // can be done...
                 "signrequest-get-vanilla-query-unreserved",
                 "signrequest-post-vanilla-query-nonunreserved",
-                "signrequest-date-header-should-be-signed-headers", // WARNING do not exclude in e2e tests
+                "signrequest-date-header-should-be-signed-headers",
                 "signrequest-support-custom-config" // 2x // TODO what are these?
             };
 

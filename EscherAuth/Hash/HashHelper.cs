@@ -4,12 +4,12 @@ using System.Text;
 
 namespace EscherAuth.Hash
 {
-    class HashHelper
+    static class HashHelper
     {
         public static string Hash(string subject, string hashAlgorithm)
         {
             HashAlgorithm hasher;
-            switch (hashAlgorithm)
+            switch (hashAlgorithm.ToUpper())
             {
                 case "SHA256":
                     hasher = SHA256.Create();
