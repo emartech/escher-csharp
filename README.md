@@ -1,6 +1,6 @@
 # escher-csharp
 
-[![Build Status](https://travis-ci.org/tt0th/escher-csharp.svg?branch=master)](https://travis-ci.org/tt0th/escher-csharp)
+[![Build Status](https://travis-ci.org/emartech/escher-csharp.svg?branch=master)](https://travis-ci.org/emartech/escher-csharp)
 
 The C# implementation of the Escher Authentication library.
 
