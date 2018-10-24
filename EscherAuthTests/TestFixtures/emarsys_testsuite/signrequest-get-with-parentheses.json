@@ -19,14 +19,15 @@
       "body": ""
   },
   "config": {
+      "hashAlgo": "SHA256",
       "vendorKey": "AWS4",
       "algoPrefix": "AWS4",
-      "hashAlgo": "SHA256",
       "credentialScope": "us-east-1/host/aws4_request",
       "apiSecret": "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY",
       "accessKeyId": "AKIDEXAMPLE",
       "authHeaderName": "Authorization",
-      "dateHeaderName": "Date"
+      "dateHeaderName": "Date",
+      "date": "2011-09-09T23:36:00.000Z"
   },
   "expected": {
       "request": {
