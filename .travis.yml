@@ -1,10 +1,6 @@
 language: csharp
-solution: EscherAuth.sln
-
-sudo: false
-
+mono: none
+dotnet: 2.1.0
 script:
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
-  - xbuild /p:Configuration=Release EscherAuth.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe -labels -nologo ./EscherAuthTests/bin/Release/EscherAuthTests.dll
-
+ - dotnet restore
+ - dotnet test EscherAuthTests
