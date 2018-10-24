@@ -2,11 +2,11 @@
 <package >
   <metadata>
     <id>EscherAuth</id>
-    <version>1.0.4</version>
+    <version>2.0.4</version>
     <title>$title$</title>
     <authors>Tibor Toth</authors>
     <owners>Tibor Toth</owners>
-    <copyright>Copyright 2015</copyright>
+    <copyright>Copyright 2018</copyright>
     <description>The C# implementation of the Escher library.</description>
     <tags>EscherAuth Escher Authentication Sign Signature</tags>
   </metadata>
