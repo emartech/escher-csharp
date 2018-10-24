@@ -32,7 +32,7 @@
   "expected": {
       "request": {
           "method": "GET",
-          "url": "/?test=%28%29",
+          "url": "/?test=()",
           "headers": [
               [
                   "Date",
