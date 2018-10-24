@@ -242,6 +242,9 @@
     <None Include="TestFixtures\emarsys_testsuite\signrequest-get-header-value-order.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestFixtures\emarsys_testsuite\signrequest-get-with-parentheses.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestFixtures\emarsys_testsuite\signrequest-only-sign-specified-headers.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

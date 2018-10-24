@@ -87,7 +87,7 @@ namespace EscherAuth
                 return null;
             }
 
-            value = HttpUtility.UrlEncode(value);
+            value = Uri.EscapeDataString(value);
             return Regex.Replace(value, "(%[0-9a-f][0-9a-f])", c => c.Value.ToUpper());
         }
     }
