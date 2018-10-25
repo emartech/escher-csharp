@@ -77,7 +77,8 @@ namespace EscherAuth
                     ? new Tuple<string, string[]>(values.FirstOrDefault(), new[] {""})
                     : new Tuple<string, string[]>(key, values));
             }
-            return String.Join("&", enumerableQueryParams.Select(param => String.Join("&", param.Item2.Select(value => param.Item1 + "=" + value))));
+            var sortedQueryParams = enumerableQueryParams.OrderBy(i => i.Item1).ToList();
+            return String.Join("&", sortedQueryParams.Select(param => String.Join("&", param.Item2.Select(value => param.Item1 + "=" + value))));
         }
 
         private static string UrlEncodeUpperCase(string value)
