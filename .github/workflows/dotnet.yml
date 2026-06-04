@@ -17,7 +17,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 2.1.300
+        dotnet-version: LTS
 
     - name: Restore dependencies
       run: dotnet restore
