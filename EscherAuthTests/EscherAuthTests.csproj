@@ -5,7 +5,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>EscherAuthTests</RootNamespace>
     <AssemblyName>EscherAuthTests</AssemblyName>
-    <TargetFramework>net10.0*</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Company>Emarsys</Company>
     <Product>EscherAuthTests</Product>
     <AssemblyName>EscherAuthTests</AssemblyName>
