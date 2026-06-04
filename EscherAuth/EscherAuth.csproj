@@ -4,7 +4,7 @@
     <ProjectGuid>{A76DEB39-C74E-425A-A4E7-1F145BEF54A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>EscherAuth</RootNamespace>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net10.0*</TargetFramework>
     <Company>Emarsys</Company>
     <Product>EscherAuth</Product>
     <AssemblyName>EscherAuth</AssemblyName>
